@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PostsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -26,7 +26,6 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::all();
-//        print_r(json_encode($posts));exit;
-        return view('admin.home', ["posts" => $posts]);
+        return response()->json($posts);
     }
 }

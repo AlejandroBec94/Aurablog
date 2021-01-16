@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PostController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,10 +23,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function show($slug)
     {
-        $posts = Post::all();
-//        print_r(json_encode($posts));exit;
-        return view('admin.home', ["posts" => $posts]);
+        return Post::where('slug', $slug)->first();
     }
 }

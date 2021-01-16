@@ -18,13 +18,17 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+/*
 Route::middleware('auth:api')->group(function (){
 
     Route::get('/admin/posts', function () {
         return view('welcome.admin');
     });
 
-});
+});*/
 
-Route::get('/admin', 'Admin\HomeController@index')->name('admin');
+Route::get('/{any}','Admin\HomeController@index')->where('any','.*');
+
+//Route::get('/admin', 'Admin\HomeController@index')->name('admin');
+//Route::get('/posts', 'Admin\Post\PostsController@index')->name('posts');
+//Route::get('/post/{slug}', 'Admin\Post\PostsController@show')->name('post');

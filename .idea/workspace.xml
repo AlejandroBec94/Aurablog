@@ -1,15 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="20269ba8-32ec-4ce9-9229-a5a0528fccc7" name="Default Changelist" comment="" />
+    <list default="true" id="20269ba8-32ec-4ce9-9229-a5a0528fccc7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Admin/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Aurablog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Aurablog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -116,6 +171,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1n8TzFEOG2tSXM9o20vNb8zt0DF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -124,7 +180,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components/Admin" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -132,6 +188,8 @@
       <recent name="D:\projects\personal\Aurablog\resources\views\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\personal\Aurablog\resources\js\components\Admin" />
+      <recent name="D:\projects\personal\Aurablog\app\Http\Controllers\Admin\Post" />
       <recent name="D:\projects\personal\Aurablog\resources\views\auth" />
       <recent name="D:\projects\personal\Aurablog\resources\views" />
     </key>
@@ -153,20 +211,53 @@
       <option name="presentableId" value="Default" />
       <updated>1610770978689</updated>
       <workItem from="1610770980029" duration="2970000" />
+      <workItem from="1610819128467" duration="285000" />
+      <workItem from="1610819635082" duration="166000" />
+      <workItem from="1610819814217" duration="2005000" />
+      <workItem from="1610825179358" duration="1065000" />
+      <workItem from="1610826309028" duration="11174000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="455" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610827518442">
+      <screen x="84" y="0" width="1282" height="768" />
+    </state>
+    <state x="455" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/84.0.1282.768@84.0.1282.768" timestamp="1610827518442" />
+    <state x="176" y="92" width="1098" height="584" key="DiffContextDialog" timestamp="1610778675002">
+      <screen x="84" y="0" width="1282" height="768" />
+    </state>
+    <state x="176" y="92" width="1098" height="584" key="DiffContextDialog/84.0.1282.768@84.0.1282.768" timestamp="1610778675002" />
     <state x="505" y="139" key="FileChooserDialogImpl" timestamp="1610774044558">
       <screen x="84" y="0" width="1282" height="768" />
     </state>
     <state x="505" y="139" key="FileChooserDialogImpl/84.0.1282.768@84.0.1282.768" timestamp="1610774044558" />
-    <state x="432" y="117" width="585" height="534" key="find.popup" timestamp="1610773205382">
+    <state x="559" y="307" key="NewPhpFileDialog" timestamp="1610836436859">
       <screen x="84" y="0" width="1282" height="768" />
     </state>
-    <state x="432" y="117" width="585" height="534" key="find.popup/84.0.1282.768@84.0.1282.768" timestamp="1610773205382" />
+    <state x="559" y="307" key="NewPhpFileDialog/84.0.1282.768@84.0.1282.768" timestamp="1610836436859" />
+    <state x="176" y="92" width="1098" height="584" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1610778675002">
+      <screen x="84" y="0" width="1282" height="768" />
+    </state>
+    <state x="176" y="92" width="1098" height="584" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/84.0.1282.768@84.0.1282.768" timestamp="1610778675002" />
+    <state x="432" y="117" width="585" height="534" key="find.popup" timestamp="1610830781859">
+      <screen x="84" y="0" width="1282" height="768" />
+    </state>
+    <state x="432" y="117" width="585" height="534" key="find.popup/84.0.1282.768@84.0.1282.768" timestamp="1610830781859" />
   </component>
 </project>

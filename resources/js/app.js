@@ -4,9 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Vue from 'vue';
+
+import App from "./components/Admin/App"
+import PostsComponent from "./components/Admin/PostsComponent"
+import router from './router'
 require('./bootstrap');
 
-window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +23,11 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+/*
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('app', require('./components/Admin/AppComponent.vue').default);
+Vue.component('posts-component', require('./components/Admin/PostsComponent.vue').default);
+*/
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +37,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    components: {
+        App,
+        PostsComponent
+    },
+    router
 });
