@@ -27,9 +27,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 });*/
 
-Route::get('/my-api-endpoint',  function  (Request $request)  {
 
-    return response()->json(['Hello Laravel 7']);
+Route::group(['middleware' => 'cors'], function () {
+
+    Route::get('/posts', 'Admin\PostsController@index')->name('posts');
+    Route::get('/post/{slug}', 'Admin\PostsController@show')->name('posts');
 
 });
 

@@ -8,7 +8,11 @@ import Vue from 'vue';
 
 import App from "./components/Admin/App"
 import PostsComponent from "./components/Admin/PostsComponent"
+import PostComponent from "./components/Admin/PostComponent"
 import router from './router'
+import SpinnerComponent from './components/assets/SpinnerComponent'
+
+
 require('./bootstrap');
 
 
@@ -25,9 +29,10 @@ require('./bootstrap');
 
 /*
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('app', require('./components/Admin/AppComponent.vue').default);
 Vue.component('posts-component', require('./components/Admin/PostsComponent.vue').default);
 */
+Vue.component('SpinnerComponent', require('./components/assets/SpinnerComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -39,7 +44,9 @@ const app = new Vue({
     el: '#app',
     components: {
         App,
-        PostsComponent
+        PostsComponent,
+        SpinnerComponent,
+        PostComponent,
     },
     router
 });

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <router-link to="/posts">Home</router-link>
         <router-view></router-view>
     </div>
 </template>

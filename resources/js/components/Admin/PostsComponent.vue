@@ -1,56 +1,97 @@
 <template>
 
-    <!--<div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col" v-for="post in posts" >
-            <div class="card mb-3" >
-                <div class="card-body" onclick="alert('hola')">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.content }}</p>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            {{ moment(post.created_at,"DD-MM-YYYY").fromNow() }}
-                        </small>
-                    </p>
+    <div>
+        <SpinnerComponent v-show="loading"></SpinnerComponent>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" v-show="current_page > 1" @click="changePage(1)" tabindex="-1" aria-disabled="true">First</a>
+                </li>
+                <li class="page-item" @click="changePage(current_page - 1)" v-show="current_page > 1"><a class="page-link" href="#">{{ current_page - 1 }}</a></li>
+                <li class="page-item disabled"><a class="page-link" href="#">{{ current_page }}</a></li>
+                <li class="page-item" @click="changePage(current_page + 1)" v-show="current_page + 1 <= last_page"><a class="page-link" href="#">{{ current_page + 1 }}</a></li>
+                <li class="page-item">
+                    <a class="page-link" v-show="current_page !== last_page" @click="changePage(last_page)">Final</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+
+            <div class="col" v-for="post in posts" :key="post.id">
+                <div class="card mb-3">
+                    <div class="card-body" >
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.content }}</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                {{ moment(post.created_at,"DD-MM-YYYY").fromNow() }}
+                            </small>
+                        </p>
+                        <router-link
+                            class="btn btn-outline-primary btn-block"
+                            :to="{
+                          name: 'PostDetails',
+                          params: { slug: post.slug }
+                        }">
+                            Ver m&aacute;s
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>-->
-    <!--<div>
-        <div v-for="post in posts">
-            {{post.title}}
-        </div>
-    </div>-->
+    </div>
 
 </template>
 
 <script>
     import moment from "moment";
+    import axios from 'axios';
 
     export default {
         name: "Posts",
         data() {
             return {
                 moment: moment,
-                posts: null
+                posts: [],
+                loading: true,
+                current_page: null,
+                last_page: null,
             }
         },
-        mounted (){
+        methods: {
+            changePage(page){
+                axios
+                    .get('/api/posts/?page='+page)
+                    .then(response => {
+                        this.loading = false
+                        this.posts = response.data.data
+                        this.current_page = response.data.current_page
+                        this.last_page = response.data.last_page
+                        console.log(response.data)
+                    })
+            }
+        },
+        created() {
             axios
-                .get('localhost:8001/api/my-api-endpoint')
-                // .get('localhost:8001/api/posts')
-                // .get(process.env.APP_URL + '/api/posts')
-                .then(response => console.log(response))
+                .get('/api/posts')
+                .then(response => {
+                    this.loading = false
+                    this.posts = response.data.data
+                    this.current_page = response.data.current_page
+                    this.last_page = response.data.last_page
+                    console.log(response.data)
+                })
             console.log(this.posts)
         }
     }
 </script>
 
 <style scoped>
-    .card{
+    a{
         cursor: pointer;
     }
-    .card:hover{
+    .card:hover {
         transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
     }
 </style>
