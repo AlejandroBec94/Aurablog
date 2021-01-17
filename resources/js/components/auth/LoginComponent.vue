@@ -108,6 +108,11 @@
                     });*/
 
             }
+        },
+        created(){
+            if (this.$store.getters.loggedIn){
+                this.$router.push({ name: "Dashboard" });
+            }
         }
     }
 </script>

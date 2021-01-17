@@ -1,5 +1,9 @@
 <template>
 
+    <li class="nav-item">
+        <router-link class="nav-link" to="/posts">Posts</router-link>
+    </li>
+
 </template>
 
 <script>
@@ -10,6 +14,9 @@
                 token: this.$store.state.token
             }
         },
+        created() {
+
+        }
     }
 </script>
 

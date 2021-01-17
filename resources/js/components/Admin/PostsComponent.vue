@@ -1,9 +1,11 @@
 <template>
 
     <div class="container">
+
         <SpinnerComponent v-show="loading"></SpinnerComponent>
+        <button type="button" class="btn btn-primary float-right">+ Add post</button>
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content">
                 <li class="page-item">
                     <a class="page-link" v-show="current_page > 1" @click="changePage(1)" tabindex="-1"
                        aria-disabled="true">First</a>
@@ -20,7 +22,7 @@
         </nav>
         <div class="row row-cols-1 row-cols-md-2 g-4">
 
-            <div class="col" v-for="post in posts" :key="post.id">
+            <div class="col" v-for="post in filteredResources" :key="post.id">
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
@@ -59,6 +61,8 @@
                 loading: true,
                 current_page: null,
                 last_page: null,
+                token: this.$store.state.token,
+                searchQuery: ''
             }
         },
         methods: {
@@ -85,6 +89,16 @@
                     console.log(response.data)
                 })
             console.log(this.posts)
+        },
+        computed:{
+            filteredResources (){
+                if(this.searchQuery){
+                    console.log(this.posts.filter(p => console.log(p.title)))
+                    return this.posts.filter((p) => p.title == this.searchQuery);
+                }else{
+                    return this.posts;
+                }
+            }
         }
     }
 </script>

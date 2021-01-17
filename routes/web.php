@@ -13,19 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-/*
-Route::middleware('auth:api')->group(function (){
 
-    Route::get('/admin/posts', function () {
-        return view('welcome.admin');
-    });
-
-});*/
 
 Route::get('/{any}','Admin\HomeController@index')->where('any','.*');
 

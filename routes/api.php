@@ -25,24 +25,15 @@ Route::group([
 
     Route::group([
         'middleware' => 'auth:api'
-    ], function() {
+    ], function () {
         Route::get('logout', 'Auth\AuthController@logout');
         Route::post('user', 'Auth\AuthController@user');
     });
 });
 
-/*Route::middleware('cors')->group(function(){
-    //your_routes
-    Route::get('/posts', 'Admin\Post\PostsController@index')->name('posts');
 
-});*/
+Route::get('/posts', 'Admin\PostsController@index')->name('posts');
+Route::get('/post/{slug}', 'Admin\PostsController@show')->name('posts');
 
-
-Route::group(['middleware' => 'cors'], function () {
-
-    Route::get('/posts', 'Admin\PostsController@index')->name('posts');
-    Route::get('/post/{slug}', 'Admin\PostsController@show')->name('posts');
-
-});
 
 

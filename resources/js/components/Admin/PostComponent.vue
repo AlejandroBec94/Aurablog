@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class="container">
 
         <div class="card col-lg-12">
             {{ token }}

@@ -6,6 +6,8 @@
 
 import Vue from 'vue';
 
+
+
 import App from "./components/Admin/App"
 import Dashboard from "./components/Dashboard"
 import PostsComponent from "./components/Admin/PostsComponent"
@@ -13,6 +15,8 @@ import PostComponent from "./components/Admin/PostComponent"
 import LoginComponent from "./components/auth/LoginComponent"
 import router from './router'
 import SpinnerComponent from './components/assets/SpinnerComponent'
+import LogoutComponent from "./components/auth/LogoutComponent";
+
 
 import store from './store'
 
@@ -82,6 +86,7 @@ const app = new Vue({
         PostComponent,
         LoginComponent,
         Dashboard,
+        LogoutComponent
     },
     router, store
 });

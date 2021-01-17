@@ -29,6 +29,7 @@ class PostsController extends Controller
         return response()->json($posts);
     }
 
+
     public function show($slug)
     {
         return Post::where("slug", $slug)->first();

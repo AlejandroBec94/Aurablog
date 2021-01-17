@@ -49,8 +49,8 @@ const store = new Vuex.Store({
             if (context.getters.loggedIn){
 
                 return new Promise((resolve, reject) => {
-                    axios.post('/api/logout', '', {
-                        headers: { Authorization: "Bearer " + context.state.token }
+                    axios.get('/api/auth/logout', {
+                        headers: { 'Authorization': "Bearer " + context.state.token }
                     })
                         .then(response => {
                             //console.log(response)
