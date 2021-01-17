@@ -86,12 +86,9 @@
                 this.error = false;
 
                 this.$store
-                    .dispatch("retrieveToken", {
-                        username: this.username,
-                        password: this.password
-                    })
+                    .dispatch("retrieveToken", body)
                     .then(response => {
-                        this.$router.push({ name: "dashboard" });
+                        this.$router.push({ name: "Dashboard" });
                     })
                     .catch(error => {
                         this.error = error.response.data;

@@ -14,6 +14,8 @@ import LoginComponent from "./components/auth/LoginComponent"
 import router from './router'
 import SpinnerComponent from './components/assets/SpinnerComponent'
 
+import store from './store'
+
 // axios.defaults.withCredentials = true;
 
 require('./bootstrap');
@@ -55,6 +57,22 @@ Vue.component(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (!store.getters.loggedIn) {
+            next({
+                name: 'login',
+            })
+        } else {
+            next()
+        }
+    } else {
+        next() // make sure to always call next()!
+    }
+})
+
 const app = new Vue({
     el: '#app',
     components: {
@@ -63,7 +81,7 @@ const app = new Vue({
         SpinnerComponent,
         PostComponent,
         LoginComponent,
-        Dashboard
+        Dashboard,
     },
-    router
+    router, store
 });
