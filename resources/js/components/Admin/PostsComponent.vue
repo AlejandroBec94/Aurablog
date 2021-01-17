@@ -1,15 +1,18 @@
 <template>
 
-    <div>
+    <div class="container">
         <SpinnerComponent v-show="loading"></SpinnerComponent>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" v-show="current_page > 1" @click="changePage(1)" tabindex="-1" aria-disabled="true">First</a>
+                    <a class="page-link" v-show="current_page > 1" @click="changePage(1)" tabindex="-1"
+                       aria-disabled="true">First</a>
                 </li>
-                <li class="page-item" @click="changePage(current_page - 1)" v-show="current_page > 1"><a class="page-link" href="#">{{ current_page - 1 }}</a></li>
+                <li class="page-item" @click="changePage(current_page - 1)" v-show="current_page > 1"><a
+                    class="page-link" href="#">{{ current_page - 1 }}</a></li>
                 <li class="page-item disabled"><a class="page-link" href="#">{{ current_page }}</a></li>
-                <li class="page-item" @click="changePage(current_page + 1)" v-show="current_page + 1 <= last_page"><a class="page-link" href="#">{{ current_page + 1 }}</a></li>
+                <li class="page-item" @click="changePage(current_page + 1)" v-show="current_page + 1 <= last_page"><a
+                    class="page-link" href="#">{{ current_page + 1 }}</a></li>
                 <li class="page-item">
                     <a class="page-link" v-show="current_page !== last_page" @click="changePage(last_page)">Final</a>
                 </li>
@@ -19,7 +22,7 @@
 
             <div class="col" v-for="post in posts" :key="post.id">
                 <div class="card mb-3">
-                    <div class="card-body" >
+                    <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text">{{ post.content }}</p>
                         <p class="card-text">
@@ -59,9 +62,9 @@
             }
         },
         methods: {
-            changePage(page){
+            changePage(page) {
                 axios
-                    .get('/api/posts/?page='+page)
+                    .get('/api/posts/?page=' + page)
                     .then(response => {
                         this.loading = false
                         this.posts = response.data.data
@@ -87,9 +90,10 @@
 </script>
 
 <style scoped>
-    a{
+    a {
         cursor: pointer;
     }
+
     .card:hover {
         transform: scale(1.05);
         box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);

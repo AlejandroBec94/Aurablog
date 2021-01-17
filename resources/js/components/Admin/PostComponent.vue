@@ -2,42 +2,47 @@
 
     <div>
 
-        hello
+        <div class="card col-lg-12">
+            {{ token }}
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.content }}</p>
+                <p class="card-subtitle mb-2 text-muted">
+                    {{ moment(post.created_at).format('LLLL') }}
+                </p>
+            </div>
+        </div>
+
     </div>
 
 </template>
 
 <script>
-    /*import moment from "moment";
-    import axios from 'axios';*/
+    import moment from "moment";
+    import axios from 'axios';
 
     export default {
         name: "Post",
         data() {
             return {
-                slug: this.$route.params.slug
+                moment: moment,
+                slug: this.$route.params.slug,
+                post: [],
+                token: localStorage.getItem('api_token'),
             }
         },
         created() {
             console.log(this.slug)
-          /*  axios
-                .get('/api/posts')
+            axios
+                .get('/api/post/' + this.slug)
                 .then(response => {
-                    this.loading = false
-                    this.posts = response.data
+                    this.post = response.data
+                    console.log(this.post)
                 })
-            console.log(this.posts)*/
         }
     }
 </script>
 
 <style scoped>
-    .card {
-        cursor: pointer;
-    }
 
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
-    }
 </style>

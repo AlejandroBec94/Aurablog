@@ -7,11 +7,14 @@
 import Vue from 'vue';
 
 import App from "./components/Admin/App"
+import Dashboard from "./components/Dashboard"
 import PostsComponent from "./components/Admin/PostsComponent"
 import PostComponent from "./components/Admin/PostComponent"
+import LoginComponent from "./components/auth/LoginComponent"
 import router from './router'
 import SpinnerComponent from './components/assets/SpinnerComponent'
 
+// axios.defaults.withCredentials = true;
 
 require('./bootstrap');
 
@@ -32,8 +35,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('posts-component', require('./components/Admin/PostsComponent.vue').default);
 */
 Vue.component('SpinnerComponent', require('./components/assets/SpinnerComponent.vue').default);
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
 
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
 
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -47,6 +62,8 @@ const app = new Vue({
         PostsComponent,
         SpinnerComponent,
         PostComponent,
+        LoginComponent,
+        Dashboard
     },
     router
 });

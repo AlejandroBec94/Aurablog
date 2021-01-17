@@ -43,6 +43,9 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/posts">Posts</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/dashboard">dashboard</router-link>
+                        </li>
                         @guest
 
                             <li class="nav-item">
@@ -78,7 +81,8 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <app></app>
+{{--            @yield('content')--}}
         </main>
     </div>
 </body>
