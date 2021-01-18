@@ -1968,7 +1968,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log(this.slug);
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/post/' + this.slug).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/posts/' + this.slug).then(function (response) {
       _this.post = response.data;
       console.log(_this.post);
     });
@@ -2040,6 +2040,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2052,7 +2090,9 @@ __webpack_require__.r(__webpack_exports__);
       current_page: null,
       last_page: null,
       token: this.$store.state.token,
-      searchQuery: ''
+      title: '',
+      content: '',
+      modal: false
     };
   },
   methods: {
@@ -2066,30 +2106,51 @@ __webpack_require__.r(__webpack_exports__);
         _this.last_page = response.data.last_page;
         console.log(response.data);
       });
+    },
+    savePost: function savePost() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/auth/posts', {
+        "title": this.title,
+        "content_post": this.content
+      }, {
+        headers: {
+          'Authorization': "Bearer " + this.token
+        }
+      }).then(function (response) {
+        if (error.response !== 200) {
+          _this2.modal = true;
+        }
+
+        console.log(response.data);
+      })["catch"](function (error) {
+        this.modal = true;
+        console.log(response.data);
+      });
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/posts').then(function (response) {
-      _this2.loading = false;
-      _this2.posts = response.data.data;
-      _this2.current_page = response.data.current_page;
-      _this2.last_page = response.data.last_page;
+      _this3.loading = false;
+      _this3.posts = response.data.data;
+      _this3.current_page = response.data.current_page;
+      _this3.last_page = response.data.last_page;
       console.log(response.data);
     });
     console.log(this.posts);
   },
   computed: {
     filteredResources: function filteredResources() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (this.searchQuery) {
         console.log(this.posts.filter(function (p) {
           return console.log(p.title);
         }));
         return this.posts.filter(function (p) {
-          return p.title == _this3.searchQuery;
+          return p.title == _this4.searchQuery;
         });
       } else {
         return this.posts;
@@ -61198,6 +61259,143 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "createPost",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.modal,
+                          expression: "modal"
+                        }
+                      ],
+                      staticClass: "alert alert-warning",
+                      attrs: { role: "alert" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Ha ocurrido un error al crear Post\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("form", [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-form-label",
+                          attrs: { for: "recipient-name" }
+                        },
+                        [_vm._v("Título:")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.title,
+                            expression: "title"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", id: "recipient-name" },
+                        domProps: { value: _vm.title },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.title = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-form-label",
+                          attrs: { for: "message-text" }
+                        },
+                        [_vm._v("Content:")]
+                      ),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.content,
+                            expression: "content"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "message-text" },
+                        domProps: { value: _vm.content },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.content = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Close")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" },
+                      on: { click: _vm.savePost }
+                    },
+                    [_vm._v("Guardar")]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
       _c("SpinnerComponent", {
         directives: [
           {
@@ -61213,9 +61411,13 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-primary float-right",
-          attrs: { type: "button" }
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#createPost"
+          }
         },
-        [_vm._v("+ Add post")]
+        [_vm._v("+ Add\n        post\n    ")]
       ),
       _vm._v(" "),
       _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
@@ -61384,7 +61586,33 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Nuevo Post")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

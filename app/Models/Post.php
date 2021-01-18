@@ -9,13 +9,15 @@ use Illuminate\Notifications\Notifiable;
 class Post extends Authenticatable
 {
 
+    public $timestamps = true;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'content', 'updated_at', 'created_at'
+        'title', 'slug', 'content'
     ];
 
     /**

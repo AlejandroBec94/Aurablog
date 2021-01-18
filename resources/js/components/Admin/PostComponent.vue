@@ -34,7 +34,7 @@
         created() {
             console.log(this.slug)
             axios
-                .get('/api/post/' + this.slug)
+                .get('/api/posts/' + this.slug)
                 .then(response => {
                     this.post = response.data
                     console.log(this.post)

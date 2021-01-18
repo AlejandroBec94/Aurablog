@@ -2,8 +2,46 @@
 
     <div class="container">
 
+        <div class="modal fade" id="createPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Post</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div v-show="modal" class="alert alert-warning" role="alert">
+                            Ha ocurrido un error al crear Post
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">T&iacute;tulo:</label>
+                                <input v-model="title" type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Content:</label>
+                                <textarea v-model="content" class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" @click="savePost" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <SpinnerComponent v-show="loading"></SpinnerComponent>
-        <button type="button" class="btn btn-primary float-right">+ Add post</button>
+
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#createPost">+ Add
+            post
+        </button>
+
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content">
                 <li class="page-item">
@@ -62,7 +100,9 @@
                 current_page: null,
                 last_page: null,
                 token: this.$store.state.token,
-                searchQuery: ''
+                title: '',
+                content: '',
+                modal: false
             }
         },
         methods: {
@@ -76,6 +116,27 @@
                         this.last_page = response.data.last_page
                         console.log(response.data)
                     })
+            },
+            savePost() {
+                axios
+                    .post('api/auth/posts', {
+                        "title": this.title,
+                        "content_post": this.content
+
+                    }, {
+                        headers: {'Authorization': "Bearer " + this.token}
+                    })
+                    .then(response => {
+                        if (error.response !== 200) {
+                            this.modal = true
+                        }
+                        console.log(response.data)
+                    }).catch(function (error) {
+                        this.modal = true
+                        console.log(response.data)
+
+                    }
+                );
             }
         },
         created() {
@@ -90,12 +151,12 @@
                 })
             console.log(this.posts)
         },
-        computed:{
-            filteredResources (){
-                if(this.searchQuery){
+        computed: {
+            filteredResources() {
+                if (this.searchQuery) {
                     console.log(this.posts.filter(p => console.log(p.title)))
                     return this.posts.filter((p) => p.title == this.searchQuery);
-                }else{
+                } else {
                     return this.posts;
                 }
             }
