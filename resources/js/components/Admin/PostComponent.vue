@@ -45,6 +45,12 @@
                     <p class="card-subtitle mb-2 text-muted">
                         {{ moment(post.created_at).format('LLLL') }}
                     </p>
+                    <div class="spinner-border" role="status" v-show="loading">
+                    </div>
+                    <button class="btn btn-danger" v-show="loading" @click="deleteP = false; loading = false;">Cancelar
+                        borrado
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -68,13 +74,15 @@
                 title: '',
                 content: '',
                 loading: false,
+                cancelDelete: false,
+                deleteP: true
             }
         },
         methods: {
             editPost() {
                 this.loading = true
                 axios
-                    .put('/api/auth/posts/' + post.id, {
+                    .put('/api/auth/posts/' + this.post.id, {
                         title: this.post.title,
                         content_post: this.post.content,
                     }, {
@@ -86,17 +94,26 @@
                         console.log(this.post)
                     })
             },
-            deletePost() {
-                this.loading = true
-                axios
-                    .delete('/api/auth/posts/' + post.id, {
-                        headers: {'Authorization': "Bearer " + this.token}
-                    })
-                    .then(response => {
-                        this.loading = false
-                        this.edit = false
-                        console.log(this.post)
-                    })
+            async deletePost() {
+                this.edit = false;
+                this.loading = true;
+                setTimeout(()=> this.deletePostCall(),8000);
+            },
+            deletePostCall() {
+
+                if (this.deleteP) {
+                    axios
+                        .delete('/api/auth/posts/' + this.post.id, {
+                            headers: {'Authorization': "Bearer " + this.token}
+                        })
+                        .then(response => {
+                            this.loading = false;
+                            this.$router.push({
+                                name: "Posts"
+                            })
+                            console.log(response)
+                        })
+                }
             }
         },
         created() {

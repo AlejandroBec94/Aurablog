@@ -118,8 +118,20 @@ class PostController extends Controller
      * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $response = [
+            "message" => "Post editado correctamente",
+            "code" => 200
+        ];
+
+        if (!$post->delete()) {
+            $response['message'] = "Ha ocurrido un error al editar";
+            $response['status'] = 502;
+        }
+
+        return Response($response, $response['code']);
     }
 }
