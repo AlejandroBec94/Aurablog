@@ -2,11 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureBrowserIsValid;
 
-
-header('Access-Control-Allow-Origin:  *');
-header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,30 +15,31 @@ header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Autho
 |
 */
 
-Route::group([
-    'prefix' => 'auth'
-], function () {
-    Route::post('login', 'Auth\AuthController@login');
-    Route::post('signup', 'Auth\AuthController@signup');
-
+Route::middleware([EnsureBrowserIsValid::class])->group(function () {
     Route::group([
-        'middleware' => 'auth:api'
+        'prefix' => 'auth'
     ], function () {
-        Route::get('logout', 'Auth\AuthController@logout');
-        Route::post('user', 'Auth\AuthController@user');
-        Route::resource('posts','Admin\PostController')->only([
-            'store','create'
-        ]);
+        Route::post('login', 'Auth\AuthController@login');
+        Route::post('signup', 'Auth\AuthController@signup');
+
+        Route::group([
+            'middleware' => 'auth:api'
+        ], function () {
+            Route::get('logout', 'Auth\AuthController@logout');
+            Route::post('user', 'Auth\AuthController@user');
+            Route::resource('posts', 'Admin\PostController')->only([
+                'store', 'create'
+            ]);
+        });
     });
-});
 
 //Route::resource('posts', 'Admin\PostController');
-Route::resource('posts','Admin\PostController')->only([
-    'index', 'show'
-]);
+    Route::resource('posts', 'Admin\PostController')->only([
+        'index', 'show'
+    ]);
 
 //Route::get('/posts', 'Admin\PostsController@index')->name('posts');
 //Route::get('/post/{slug}', 'Admin\PostsController@show')->name('posts');
-
+});
 
 
