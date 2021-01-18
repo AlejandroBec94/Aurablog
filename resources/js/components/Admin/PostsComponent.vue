@@ -38,7 +38,8 @@
 
         <SpinnerComponent v-show="loading"></SpinnerComponent>
 
-        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#createPost">+ Add
+        <button v-if="token" type="button" class="btn btn-primary float-right"
+                data-toggle="modal" data-target="#createPost">+ Add
             post
         </button>
 

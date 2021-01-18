@@ -28,5 +28,6 @@ class EnsureBrowserIsValid
         if ($browser == 'IE'){
             return redirect('https://browsehappy.com/');
         }
+        return $next($request);
     }
 }

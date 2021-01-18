@@ -46,19 +46,19 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content_post;
-        $post->slug = (string) Str::orderedUuid();
+        $post->slug = (string)Str::orderedUuid();
 
         $response = [
-            "message"=> "Post generado correctamente",
+            "message" => "Post generado correctamente",
             "code" => 200
         ];
 
         if (!$post->save()) {
             $response['message'] = "Ha ocurrido un error al guardar";
-            $response['status'] = 502;
+            $response['code'] = 502;
         }
 
-        return Response($response, $response['status']);
+        return Response($response, $response['code']);
 
     }
 
@@ -91,9 +91,25 @@ class PostController extends Controller
      * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update($id, Request $request)
     {
-        //
+        $post = Post::find($id);
+
+        $post->title = $request->title;
+        $post->content = $request->content_post;
+
+        $response = [
+            "message" => "Post editado correctamente",
+            "code" => 200
+        ];
+
+        if (!$post->save()) {
+            $response['message'] = "Ha ocurrido un error al editar";
+            $response['status'] = 502;
+        }
+
+        return Response($response, $response['code']);
+
     }
 
     /**

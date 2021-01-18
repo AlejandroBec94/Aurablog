@@ -20,13 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20269ba8-32ec-4ce9-9229-a5a0528fccc7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Aurablog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Aurablog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/EnsureBrowserIsValid.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/EnsureBrowserIsValid.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Admin/PostComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Admin/PostComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Admin/PostsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Admin/PostsComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -225,6 +224,8 @@
       <workItem from="1610841408876" duration="2157000" />
       <workItem from="1610843610808" duration="403000" />
       <workItem from="1610844053371" duration="4209000" />
+      <workItem from="1610938884237" duration="708000" />
+      <workItem from="1610939931780" duration="6237000" />
     </task>
     <servers />
   </component>
@@ -298,17 +299,17 @@
       <screen x="84" y="0" width="1282" height="768" />
     </state>
     <state x="176" y="92" width="1098" height="584" key="com.intellij.history.integration.ui.views.FileHistoryDialog/84.0.1282.768@84.0.1282.768" timestamp="1610912578136" />
-    <state x="432" y="117" width="585" height="534" key="find.popup" timestamp="1610928994012">
+    <state x="432" y="117" width="585" height="534" key="find.popup" timestamp="1610945106321">
       <screen x="84" y="0" width="1282" height="768" />
     </state>
-    <state x="432" y="117" width="585" height="534" key="find.popup/84.0.1282.768@84.0.1282.768" timestamp="1610928994012" />
+    <state x="432" y="117" width="585" height="534" key="find.popup/84.0.1282.768@84.0.1282.768" timestamp="1610945106321" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/resources/js/components/Admin/PostsComponent.vue</url>
-          <line>141</line>
+          <line>142</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -28,7 +28,7 @@ Route::middleware([EnsureBrowserIsValid::class])->group(function () {
             Route::get('logout', 'Auth\AuthController@logout');
             Route::post('user', 'Auth\AuthController@user');
             Route::resource('posts', 'Admin\PostController')->only([
-                'store', 'create'
+                'store', 'create', 'update'
             ]);
         });
     });

@@ -1952,6 +1952,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1961,16 +1996,53 @@ __webpack_require__.r(__webpack_exports__);
       moment: moment__WEBPACK_IMPORTED_MODULE_0___default.a,
       slug: this.$route.params.slug,
       post: [],
-      token: localStorage.getItem('api_token')
+      token: this.$store.state.token,
+      edit: false,
+      title: '',
+      content: '',
+      loading: false
     };
   },
+  methods: {
+    editPost: function editPost() {
+      var _this = this;
+
+      this.loading = true;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put('/api/auth/posts/' + post.id, {
+        title: this.post.title,
+        content_post: this.post.content
+      }, {
+        headers: {
+          'Authorization': "Bearer " + this.token
+        }
+      }).then(function (response) {
+        _this.loading = false;
+        _this.edit = false;
+        console.log(_this.post);
+      });
+    },
+    deletePost: function deletePost() {
+      var _this2 = this;
+
+      this.loading = true;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/api/auth/posts/' + post.id, {
+        headers: {
+          'Authorization': "Bearer " + this.token
+        }
+      }).then(function (response) {
+        _this2.loading = false;
+        _this2.edit = false;
+        console.log(_this2.post);
+      });
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this3 = this;
 
     console.log(this.slug);
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/posts/' + this.slug).then(function (response) {
-      _this.post = response.data;
-      console.log(_this.post);
+      _this3.post = response.data;
+      console.log(_this3.post);
     });
   }
 });
@@ -1990,6 +2062,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -61211,25 +61284,229 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card col-lg-12" }, [
-      _vm._v("\n        " + _vm._s(_vm.token) + "\n        "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [
-          _vm._v(_vm._s(_vm.post.title))
-        ]),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "btn-group", attrs: { role: "group" } }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary dropdown-toggle",
+            attrs: {
+              id: "btnGroupDrop1",
+              type: "button",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [_vm._v("\n                Opciones\n            ")]
+        ),
         _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.post.content))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-subtitle mb-2 text-muted" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.moment(_vm.post.created_at).format("LLLL")) +
-              "\n            "
-          )
-        ])
+        _c(
+          "div",
+          {
+            staticClass: "dropdown-menu",
+            attrs: { "aria-labelledby": "btnGroupDrop1" }
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    _vm.edit = true
+                  }
+                }
+              },
+              [_vm._v("Editar")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "#" },
+                on: { click: _vm.deletePost }
+              },
+              [_vm._v("Eliminar")]
+            )
+          ]
+        )
       ])
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.edit,
+              expression: "edit"
+            }
+          ],
+          staticClass: "card col-lg-12"
+        },
+        [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                { staticClass: "col-form-label", attrs: { for: "title" } },
+                [_vm._v("Título:")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.post.title,
+                    expression: "post.title"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", id: "title" },
+                domProps: { value: _vm.post.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.post, "title", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                { staticClass: "col-form-label", attrs: { for: "content" } },
+                [_vm._v("Contenido:")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.post.content,
+                    expression: "post.content"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { rows: "10", id: "content" },
+                domProps: { value: _vm.post.content },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.post, "content", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.loading,
+                  expression: "loading"
+                }
+              ],
+              staticClass: "spinner-border",
+              attrs: { role: "status" }
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.loading,
+                    expression: "!loading"
+                  }
+                ],
+                staticClass: "btn-group",
+                attrs: {
+                  role: "group",
+                  "aria-label": "Button group with nested dropdown"
+                }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.editPost }
+                  },
+                  [_vm._v("Guardar")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.edit = false
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.edit,
+              expression: "!edit"
+            }
+          ],
+          staticClass: "card col-lg-12"
+        },
+        [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v(_vm._s(_vm.post.title))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(_vm._s(_vm.post.content))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-subtitle mb-2 text-muted" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.moment(_vm.post.created_at).format("LLLL")) +
+                  "\n                "
+              )
+            ])
+          ])
+        ]
+      )
     ])
   ])
 }
@@ -61407,18 +61684,20 @@ var render = function() {
         ]
       }),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary float-right",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#createPost"
-          }
-        },
-        [_vm._v("+ Add\n        post\n    ")]
-      ),
+      _vm.token
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-primary float-right",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "#createPost"
+              }
+            },
+            [_vm._v("+ Add\n        post\n    ")]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
         _c("ul", { staticClass: "pagination justify-content" }, [
